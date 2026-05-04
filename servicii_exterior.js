@@ -1,6 +1,6 @@
 const data_exterior = [
   {
-    serviciu: "curățare exterior - întreținere",
+    serviciu: "Curățare exterior - întreținere",
     ore_lucru: "1.5",
     consumabile: 20,
     multiplicabil: "da"
@@ -12,151 +12,151 @@ const data_exterior = [
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare detaliată jante",
+    serviciu: "Curățare detaliată jante",
     ore_lucru: 4,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare compartiment motor",
+    serviciu: "Curățare compartiment motor",
     ore_lucru: 2,
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "decontaminare chimică",
+    serviciu: "Decontaminare chimică",
     ore_lucru: 1,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "decontaminare mecanică (vitrate)",
+    serviciu: "Decontaminare mecanică (vitrate)",
     ore_lucru: 1,
     consumabile: 30,
     multiplicabil: "da"
   },
   {
-    serviciu: "decontaminare mecanică (caroserie)",
+    serviciu: "Decontaminare mecanică (caroserie)",
     ore_lucru: 2,
     consumabile: 50,
     multiplicabil: "da"
   },
   {
-    serviciu: "lustruire 1 pas (fină)",
+    serviciu: "Lustruire 1 pas (fină)",
     ore_lucru: 5,
     consumabile: 70,
     multiplicabil: "da"
   },
   {
-    serviciu: "lustruire 1 pas (3 in 1)",
+    serviciu: "Lustruire 1 pas (3 in 1)",
     ore_lucru: 6,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "lustuire 2 pași (medie - fină)",
+    serviciu: "Lustuire 2 pași (medie - fină)",
     ore_lucru: 9,
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "lustruire 3 pași (hard - medie - fină)",
+    serviciu: "Lustruire 3 pași (hard - medie - fină)",
     ore_lucru: 12,
     consumabile: 80,
     multiplicabil: "da"
   },
   {
-    serviciu: "șlefuire lac",
+    serviciu: "Șlefuire lac",
     ore_lucru: 12,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "corectare zgârieturi piano black",
+    serviciu: "Corectare zgârieturi piano black",
     ore_lucru: 1,
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "corectare zgârietură fină",
+    serviciu: "Corectare zgârietură fină",
     ore_lucru: 1,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "corectare zgârietură medie",
+    serviciu: "Corectare zgârietură medie",
     ore_lucru: "1.5",
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "corectare zgârietură adâncă",
+    serviciu: "Corectare zgârietură adâncă",
     ore_lucru: 2,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "corectare punct de rugină",
+    serviciu: "Corectare punct de rugină",
     ore_lucru: 2,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "întreținere faruri/stopuri",
+    serviciu: "Întreținere faruri/stopuri",
     ore_lucru: "1.5",
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "restaurare faruri/stopuri (standard)",
+    serviciu: "Restaurare faruri/stopuri (standard)",
     ore_lucru: 2,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "restaurare faruri/stopuri (totală)",
+    serviciu: "Restaurare faruri/stopuri (totală)",
     ore_lucru: 8,
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție de lungă durată dedicat farurilor",
+    serviciu: "Tratament de protecție de lungă durată dedicat farurilor",
     ore_lucru: 1,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament glaze (extra strălucire și mascare zgârieturi)",
+    serviciu: "Tratament glaze (extra strălucire și mascare zgârieturi)",
     ore_lucru: "1.5",
     consumabile: 30,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție de scurtă durată",
+    serviciu: "Tratament de protecție de scurtă durată",
     ore_lucru: 1,
     consumabile: 50,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție cu sealant",
+    serviciu: "Tratament de protecție cu sealant",
     ore_lucru: 2,
     consumabile: 70,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție cu ceară (standard)",
+    serviciu: "Tratament de protecție cu ceară (standard)",
     ore_lucru: 2,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție cu ceară (premium)",
+    serviciu: "Tratament de protecție cu ceară (premium)",
     ore_lucru: 3,
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție cu coating ceramic",
+    serviciu: "Tratament de protecție cu coating ceramic",
     ore_lucru: 4,
     consumabile: 80,
     multiplicabil: "da"

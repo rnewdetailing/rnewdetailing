@@ -51,13 +51,13 @@ const data_exterior = [
     serviciu: "lustruire 1 pas (3 in 1)",
     ore_lucru: 6,
     consumabile: 20,
-    multiplicabil: "nu"
+    multiplicabil: "da"
   },
   {
     serviciu: "lustuire 2 pași (medie - fină)",
     ore_lucru: 9,
     consumabile: 40,
-    multiplicabil: "nu"
+    multiplicabil: "da"
   },
   {
     serviciu: "lustruire 3 pași (hard - medie - fină)",

@@ -1,9 +1,7 @@
  const data_pachete =[
 
   {
-    nume_pachet: "Custom",
-    servicii_incluse: "niciunul",
-    discount_procent: 0
+    nume_pachet: "Custom"
   },
   {
     nume_pachet: "Maintenance",

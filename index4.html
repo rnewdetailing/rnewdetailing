@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurator R.NEW</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Scripturi baze de date -->
+    <script src="clase_masini.js"></script>
+    <script src="costuri_fixe.js"></script>
+    <script src="servicii_exterior.js"></script>
+    <script src="servicii_interior.js"></script>
+    <script src="pachete_servicii.js"></script>
+    <script src="parametri_tarif.js"></script>
+    <script src="stare_masina.js"></script>
+
+    <style>
+        /* ASIGURA CA TOTUL SE CALCULEAZA LA FEL (Lățime + Padding) */
+        * { box-sizing: border-box; }
+
+        :root {
+            --albastru-rnew: #0056b3;
+            --alb: #ffffff;
+            --negru: #000000;
+            --gri-overlay: rgba(255, 255, 255, 0.9);
+            --titlu-x: 7px; --titlu-y: 0px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url('fundal.png') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0; padding: 0;
+        }
+
+        .overlay { background: rgba(0, 0, 0, 0.1); min-height: 100vh; padding-bottom: 40px; }
+
+        /* --- HEADER REORGANIZAT --- */
+        header {
+            background-color: var(--albastru-rnew);
+            color: var(--alb);
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* STANGA: Logo + Titlu */
+        .logo-section { flex: 1; display: flex; align-items: center; gap: 15px; }
+        .logo-img { width: 150px; height: auto; }
+        .titlu-configurator { font-weight: 700; font-size: 13px; transform: translate(var(--titlu-x), var(--titlu-y)); }
+
+        /* CENTRU: Tabele Rezultate */
+        .header-tables { flex: 2; display: flex; justify-content: center; gap: 10px; }
+        .mini-table {
+            background: var(--alb); color: var(--negru);
+            border-radius: 8px; padding: 8px; font-size: 11px;
+            border: 2px solid var(--albastru-rnew); min-width: 200px;
+        }
+        .mini-table table { width: 100%; border-collapse: collapse; }
+        .result-val { font-weight: bold; color: var(--albastru-rnew); text-align: right; }
+
+        /* DREAPTA: Butoane Control */
+        .header-actions { flex: 1; display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-ctrl { padding: 10px 15px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .btn-reset { background: #f8f9fa; color: #333; }
+        .btn-settings { background: rgba(255,255,255,0.2); color: white; border: 1px solid white; }
+
+        /* --- SECTIUNE CLIENT --- */
+        .client-info-card {
+            max-width: 1400px; margin: 20px auto; padding: 15px 20px;
+            background: var(--gri-overlay); border-radius: 12px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .client-input-group { display: flex; flex-direction: column; }
+        .client-input-group label { font-size: 10px; font-weight: bold; color: var(--albastru-rnew); margin-bottom: 4px; text-transform: uppercase; }
+        .client-input-group input { 
+            padding: 10px; border: 1px solid #ccc; border-radius: 6px; 
+            font-family: inherit; font-size: 14px; font-style: italic;
+        }
+
+        /* --- GRILA SERVICII --- */
+        main { 
+            padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; 
+            max-width: 1400px; margin: auto;
+        }
+        .card-tabel { background: var(--gri-overlay); border-radius: 12px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .card-tabel h2 { margin-top: 0; color: var(--albastru-rnew); font-size: 18px; border-bottom: 2px solid var(--albastru-rnew); padding-bottom: 5px; }
+        .service-row { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #ddd; font-size: 13.5px; }
+        .srv-info { font-size: 11px; color: var(--albastru-rnew); font-weight: 700; margin-left: 10px; }
+
+        /* PANEL SETARI */
+        #settingsPanel {
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; padding: 25px; border-radius: 15px; z-index: 1000; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay">
+    <header>
+        <div class="logo-section">
+            <img src="logo.png" alt="R.NEW" class="logo-img">
+        </div>
+
+        <div class="header-tables">
+            <div class="mini-table">
+                <table>
+                    <tr><td>Clasă:</td><td><select id="selClasa" onchange="calculate()"></select></td></tr>
+                    <tr><td>Stare:</td><td><select id="selStare" onchange="calculate()"></select></td></tr>
+                    <tr><td>Pachet:</td><td><select id="selPachet" onchange="applyPackage()"></select></td></tr>
+                    <tr><td>Tarif Oră:</td><td class="result-val"><span id="outTarifOra">0</span> RON</td></tr>
+                </table>
+            </div>
+            <div class="mini-table">
+                <table>
+                    <tr><td>Ore Totale:</td><td class="result-val"><span id="outOre">0</span>h</td></tr>
+                    <tr><td>Materiale:</td><td class="result-val"><span id="outMat">0</span> RON</td></tr>
+                    <tr><td>Subtotal:</td><td class="result-val"><span id="outSub">0</span> RON</td></tr>
+                    <tr><td>Discount:</td><td class="result-val" style="color:green">-<span id="outDisc">0</span> RON</td></tr>
+                    <tr><td>Preț Final:</td><td class="result-val" style="color:red; font-size:1.1em;"><span id="outFinal">0</span> RON</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="btn-ctrl btn-settings" onclick="toggleSettings()">⚙️</button>
+            <button class="btn-ctrl btn-reset" onclick="location.reload()">🔄</button>
+        </div>
+    </header>
+
+    <!-- SECTIUNEA CLIENT (ADĂUGATĂ ÎNAPOI) -->
+    <div class="client-info-card">
+        <div class="client-input-group">
+            <label>Nume Client / Firmă:</label>
+            <input type="text" placeholder="Introduceți numele clientului...">
+        </div>
+        <div class="client-input-group">
+            <label>Marcă / Model Auto:</label>
+            <input type="text" placeholder="Ex: Audi A6 Quartz Gray">
+        </div>
+        <div class="client-input-group">
+            <label>Nr. Înmatriculare:</label>
+            <input type="text" placeholder="Ex: B-123-NEW">
+        </div>
+    </div>
+
+    <main>
+        <div class="card-tabel"><h2>Servicii exterior</h2><div id="listExterior"></div></div>
+        <div class="card-tabel"><h2>Servicii interior</h2><div id="listInterior"></div></div>
+    </main>
+</div>
+
+<div id="settingsPanel">
+    <h3>Setări Interfață</h3>
+    <label>Titlu X:</label> <input type="range" min="-100" max="500" value="0" oninput="moveTitle('x', this.value)"><br>
+    <label>Titlu Y:</label> <input type="range" min="-50" max="50" value="0" oninput="moveTitle('y', this.value)"><br><br>
+    <button onclick="toggleSettings()" style="width:100%; padding: 10px;">Închide</button>
+</div>
+
+<script>
+// --- LOGICA DE CALCUL (NESCHIMBATĂ) ---
+let db = {
+    clase: typeof data_clase !== 'undefined' ? data_clase : [],
+    costuri: typeof data_costuri !== 'undefined' ? data_costuri : [],
+    exterior: typeof data_exterior !== 'undefined' ? data_exterior : [],
+    interior: typeof data_interior !== 'undefined' ? data_interior : [],
+    pachete: typeof data_pachete !== 'undefined' ? data_pachete : [],
+    parametri: typeof data_parametri !== 'undefined' ? data_parametri : [],
+    stare: typeof data_stare !== 'undefined' ? data_stare : []
+};
+
+function parseRO(val) {
+    if (val === undefined || val === null || val === "") return 0;
+    if (typeof val === 'number') return val;
+    let stringVal = val.toString().replace(',', '.');
+    return parseFloat(stringVal) || 0;
+}
+
+window.onload = initApp;
+
+function initApp() {
+    const selClasa = document.getElementById('selClasa');
+    db.clase.forEach(c => {
+        let val = c.coeficient || c.Coeficient;
+        let txt = c.clasa || c.Clasa;
+        selClasa.innerHTML += `<option value="${val}">${txt}</option>`;
+    });
+
+    const selStare = document.getElementById('selStare');
+    db.stare.forEach(s => {
+        let val = s.coef_stare || s.coef_Stare;
+        let txt = s.stare || s.Stare;
+        selStare.innerHTML += `<option value="${val}">${txt}</option>`;
+    });
+
+    const selPachet = document.getElementById('selPachet');
+    selPachet.innerHTML = `<option value="custom">Custom</option>`;
+    db.pachete.forEach(p => selPachet.innerHTML += `<option value="${p.nume_pachet}">${p.nume_pachet}</option>`);
+
+    renderList('listExterior', db.exterior, 'ext');
+    renderList('listInterior', db.interior, 'int');
+    calculate();
+}
+
+function renderList(containerId, data, prefix) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    data.forEach((s, i) => {
+        if(!s.serviciu) return;
+        container.innerHTML += `
+            <div class="service-row">
+                <label>
+                    <input type="checkbox" class="srv-check" data-type="${prefix}" data-idx="${i}" onchange="calculate()"> 
+                    ${s.serviciu}
+                </label>
+                <span class="srv-info" id="info-${prefix}-${i}"></span>
+            </div>`;
+    });
+}
+
+function calculate() {
+    let totalOre = 0, totalMat = 0;
+    const coefClasa = parseRO(document.getElementById('selClasa').value);
+    const coefStare = parseRO(document.getElementById('selStare').value);
+
+    let sumaCosturiFixe = 0;
+    let sursaCosturi = (typeof data_costuri !== 'undefined') ? data_costuri : db.costuri;
+    sursaCosturi.forEach(item => { sumaCosturiFixe += parseRO(item.suma); });
+
+    let sursaParametri = (typeof data_parametri !== 'undefined') ? data_parametri : db.parametri;
+    const salariuDorit = parseRO(sursaParametri.find(p => p.parametru === 'salariu_dorit')?.valoare || 10000);
+    const oreLucrate = parseRO(sursaParametri.find(p => p.parametru === 'ore_lucrate')?.valoare || 160);
+    const marjaProfit = parseRO(sursaParametri.find(p => p.parametru === 'marja_profit')?.valoare || 20);
+
+    const tarifOraBaza = (sumaCosturiFixe + salariuDorit) / oreLucrate;
+    const tarifOraFinal = tarifOraBaza * (1 + (marjaProfit / 100));
+
+    document.getElementById('outTarifOra').innerText = tarifOraFinal.toFixed(2);
+
+    document.querySelectorAll('.srv-check').forEach(el => {
+        const type = el.dataset.type;
+        const idx = parseInt(el.dataset.idx);
+        const s = db[type === 'ext' ? 'exterior' : 'interior'][idx];
+        const infoSpan = document.getElementById(`info-${type}-${idx}`);
+        const isMult = (s.multiplicabil === "da" || s.multiplicabil === "DA" || s.multiplicabil === 1);
+        
+        let oreSrv = isMult ? (parseRO(s.ore_lucru) * coefClasa * coefStare) : parseRO(s.ore_lucru);
+        let matSrv = isMult ? (parseRO(s.consumabile) * coefClasa * coefStare) : parseRO(s.consumabile);
+        let pretSrv = (oreSrv * tarifOraFinal) + matSrv;
+
+        if (el.checked) {
+            totalOre += oreSrv;
+            totalMat += matSrv;
+            infoSpan.innerText = `${oreSrv.toFixed(1)}h | ${pretSrv.toFixed(0)} RON`;
+            infoSpan.style.display = "inline";
+        } else {
+            infoSpan.style.display = "none";
+        }
+    });
+
+    const subtotal = (totalOre * tarifOraFinal) + totalMat;
+    const pachetNume = document.getElementById('selPachet').value;
+    const pachet = db.pachete.find(p => p.nume_pachet === pachetNume);
+    const procDisc = parseRO(pachet?.discount_procent);
+    const valoareDiscount = subtotal * (procDisc / 100);
+    const pretFinal = subtotal - valoareDiscount;
+
+    document.getElementById('outOre').innerText = totalOre.toFixed(1);
+    document.getElementById('outMat').innerText = totalMat.toFixed(0);
+    document.getElementById('outSub').innerText = subtotal.toFixed(0);
+    document.getElementById('outDisc').innerText = valoareDiscount.toFixed(0);
+    document.getElementById('outFinal').innerText = pretFinal.toFixed(0);
+}
+
+function applyPackage() {
+    const pachetNume = document.getElementById('selPachet').value;
+    const pachet = db.pachete.find(p => p.nume_pachet === pachetNume);
+    document.querySelectorAll('.srv-check').forEach(el => {
+        const s = db[el.dataset.type === 'ext' ? 'exterior' : 'interior'][parseInt(el.dataset.idx)];
+        el.checked = pachet?.servicii_incluse ? pachet.servicii_incluse.includes(s.serviciu) : false;
+    });
+    calculate();
+}
+
+function toggleSettings() {
+    const p = document.getElementById('settingsPanel');
+    p.style.display = (p.style.display === 'block') ? 'none' : 'block';
+}
+
+function moveTitle(axis, val) {
+    document.documentElement.style.setProperty(`--titlu-${axis}`, val + 'px');
+}
+</script>
+</body>
+</html>

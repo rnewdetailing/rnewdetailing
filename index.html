@@ -235,14 +235,24 @@ function parseRO(val) {
 window.onload = initApp;
 
 function initApp() {
+    // 1. Configurare Clasă Auto
     const selClasa = document.getElementById('selClasa');
-    db.clase.forEach(c => { selClasa.innerHTML += `<option value="${c.coeficient || c.Coeficient}">${c.clasa || c.Clasa}</option>`; });
+    // Adăugăm opțiunea default
+    selClasa.innerHTML = `<option value="0">Selectați clasa</option>`;
+    db.clase.forEach(c => { 
+        selClasa.innerHTML += `<option value="${c.coeficient || c.Coeficient}">${c.clasa || c.Clasa}</option>`; 
+    });
 
+    // 2. Configurare Stare Mașină
     const selStare = document.getElementById('selStare');
-    db.stare.forEach(s => { selStare.innerHTML += `<option value="${s.coef_stare || s.coef_Stare}">${s.stare || s.Stare}</option>`; });
+    // Adăugăm opțiunea default
+    selStare.innerHTML = `<option value="0">Selectați starea</option>`;
+    db.stare.forEach(s => { 
+        selStare.innerHTML += `<option value="${s.coef_stare || s.coef_Stare}">${s.stare || s.Stare}</option>`; 
+    });
 
     const selPachet = document.getElementById('selPachet');
-    selPachet.innerHTML = `<option value="custom">Custom</option>`;
+    selPachet.innerHTML = `<option value="0">Selectați pachet</option>`;
     db.pachete.forEach(p => selPachet.innerHTML += `<option value="${p.nume_pachet}">${p.nume_pachet}</option>`);
 
     renderList('listExterior', db.exterior, 'ext');

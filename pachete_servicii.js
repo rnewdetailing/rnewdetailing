@@ -1,6 +1,11 @@
  const data_pachete =[
 
   {
+    nume_pachet: "Custom",
+    servicii_incluse: ,
+    discount_procent: 0
+  },
+  {
     nume_pachet: "Maintenance",
     servicii_incluse: "curățare interior (intreținere)",
     discount_procent: 5

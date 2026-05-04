@@ -1,186 +1,186 @@
 const data_interior = [
   {
-    serviciu: "curățare interior (intreținere)",
+    serviciu: "Curățare interior (intreținere)",
     ore_lucru: 3,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățrare interior (detaliată)",
+    serviciu: "Curățrare interior (detaliată)",
     ore_lucru: 8,
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "aspirare habitaclu",
+    serviciu: "Aspirare habitaclu",
     ore_lucru: "1.5",
     consumabile: 80,
     multiplicabil: "da"
   },
   {
-    serviciu: "suflare habitaclu cu aer comprimat",
+    serviciu: "Suflare habitaclu cu aer comprimat",
     ore_lucru: 1,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare preșuri - textil (injecție-extracție)",
+    serviciu: "Curățare preșuri - textil (injecție-extracție)",
     ore_lucru: "1.5",
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare preșuri - cauciuc",
+    serviciu: "Curățare preșuri - cauciuc",
     ore_lucru: 1,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare mochetă (standard)",
+    serviciu: "Curățare mochetă (standard)",
     ore_lucru: "1.5",
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare mochetă (injecție-extracție)",
+    serviciu: "Curățare mochetă (injecție-extracție)",
     ore_lucru: "2.5",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare scaune și banchetă - textil (standard)",
+    serviciu: "Curățare scaune și banchetă - textil (standard)",
     ore_lucru: "2.5",
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare scaune și banchetă - textil (injecție-extracție)",
+    serviciu: "Curățare scaune și banchetă - textil (injecție-extracție)",
     ore_lucru: "4.5",
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare scaune și banchetă - piele (standard)",
+    serviciu: "Curățare scaune și banchetă - piele (standard)",
     ore_lucru: "1.5",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare scaune și banchetă - piele (detaliată)",
+    serviciu: "Curățare scaune și banchetă - piele (detaliată)",
     ore_lucru: "4.5",
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție pentru suprafețele din piele",
+    serviciu: "Tratament de protecție pentru suprafețele din piele",
     ore_lucru: 1,
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "hidratare suprafețe textile",
+    serviciu: "Hidratare suprafețe textile",
     ore_lucru: 1,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare panouri laterale - textil",
+    serviciu: "Curățare panouri laterale - textil",
     ore_lucru: "2.5",
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare panouri laterale - piele",
+    serviciu: "Curățare panouri laterale - piele",
     ore_lucru: 2,
     consumabile: 80,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare portbagaj (simplă)",
+    serviciu: "Curățare portbagaj (simplă)",
     ore_lucru: 1,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare portbagaj (detaliată)",
+    serviciu: "Curățare portbagaj (detaliată)",
     ore_lucru: "1.5",
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare volan din spuma/plastic",
+    serviciu: "Curățare volan din spuma/plastic",
     ore_lucru: "0.4",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare volan din piele și tratament de protecție",
+    serviciu: "Curățare volan din piele și tratament de protecție",
     ore_lucru: 1,
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare plafon textil",
+    serviciu: "Curățare plafon textil",
     ore_lucru: "1.5",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare plafon alcantara",
+    serviciu: "Curățare plafon alcantara",
     ore_lucru: 2,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare centuri de siguranță",
+    serviciu: "Curățare centuri de siguranță",
     ore_lucru: 3,
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare planșă de bord și consolă centrală",
+    serviciu: "Curățare planșă de bord și consolă centrală",
     ore_lucru: "0.5",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare mânere, butoane, ornamente / inserții plastic",
+    serviciu: "Curățare mânere, butoane, ornamente / inserții plastic",
     ore_lucru: "0.3",
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare compartimente (uși, cotieră, torpedou)",
+    serviciu: "Curățare compartimente (uși, cotieră, torpedou)",
     ore_lucru: "1.5",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "tratament de protecție uv elemente din plastic / cauciuc",
+    serviciu: "Tratament de protecție uv elemente din plastic / cauciuc",
     ore_lucru: 1,
     consumabile: 20,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare suprafețe vitrate",
+    serviciu: "Curățare suprafețe vitrate",
     ore_lucru: "0.7",
     consumabile: 40,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare pedale",
+    serviciu: "Curățare pedale",
     ore_lucru: "0.5",
     consumabile: 15,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare păr de nimale",
+    serviciu: "Curățare păr de nimale",
     ore_lucru: "1.5",
     consumabile: 10,
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare gumă de mestecat",
+    serviciu: "Curățare gumă de mestecat",
     ore_lucru: "0.25",
     consumabile: 15,
     multiplicabil: "da"

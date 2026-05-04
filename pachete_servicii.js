@@ -2,6 +2,7 @@
 
   {
     nume_pachet: "Custom",
+    servicii_incluse: "niciunul",
     discount_procent: 0
   },
   {

@@ -239,6 +239,7 @@ function initApp() {
     db.clase.forEach(c => { selClasa.innerHTML += `<option value="${c.coeficient || c.Coeficient}">${c.clasa || c.Clasa}</option>`; });
 
     const selStare = document.getElementById('selStare');
+	selPachet.innerHTML = `<option value="selectstare">Selectați starea</option>`;
     db.stare.forEach(s => { selStare.innerHTML += `<option value="${s.coef_stare || s.coef_Stare}">${s.stare || s.Stare}</option>`; });
 
     const selPachet = document.getElementById('selPachet');

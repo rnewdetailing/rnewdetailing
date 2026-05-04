@@ -6,7 +6,7 @@ const data_exterior = [
     multiplicabil: "da"
   },
   {
-    serviciu: "curățare exterior - detaliată",
+    serviciu: "Curățare exterior - detaliată",
     ore_lucru: 3,
     consumabile: 40,
     multiplicabil: "da"

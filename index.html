@@ -116,7 +116,18 @@
             width: 100%;
             margin-top: 30px; /* Spațiu față de tabelele de mai sus */
             box-shadow: 0 -4px 10px rgba(0,0,0,0.1); /* Umbră fină în partea de sus */
+			display: flex;
+            justify-content: space-between; /* Împinge elementele spre margini */
+            align-items: center;
         }
+		/* Stil pentru grupurile din footer */
+        .footer-item {
+            flex: 1; /* Împarte footer-ul în 3 părți egale */
+        }
+
+        .footer-left { text-align: left; }
+        .footer-center { text-align: center; font-weight: bold; }
+        .footer-right { text-align: right; }
         footer b { font-weight: 700; }
         footer i { font-style: italic; opacity: 0.9; }
 		
@@ -152,6 +163,11 @@
                 background-color: var(--albastru-rnew) !important;
                 -webkit-print-color-adjust: exact;
                 margin-top: 10px;
+				footer {
+                display: flex !important;
+                justify-content: space-between !important;
+                padding: 10px 20px !important;
+            }
             }
         }
     </style>

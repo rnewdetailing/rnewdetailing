@@ -256,6 +256,24 @@
 			text-align: center;
 		}
 
+.opt-card {
+    flex: 1;           /* Asta le face să se împartă egal în fereastră */
+    max-width: 180px;  /* ADAUGĂ ASTA dacă vrei să nu devină prea late pe ecrane mari */
+    min-height: 150px; /* MODIFICĂ ASTA pentru a le face mai scurte sau mai lungi (era 160px) */
+    
+    cursor: pointer;
+    border: 2px solid #000000;
+    border-radius: 12px;
+    padding: 15px 10px; /* Poți micșora primul număr (padding sus/jos) pentru un aspect mai compact */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
 		/* Dacă tot se simte prea sus, putem adăuga o margine superioară doar conținutului */
 		.opt-card img, 
 		.opt-card div {

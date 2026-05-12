@@ -731,7 +731,7 @@ function formatTime(oreZecimale) {
     let totalMinute = Math.round(oreZecimale * 60);
     let h = Math.floor(totalMinute / 60);
     let m = totalMinute % 60;
-    if (h === 0) return m + " min.";
+    if (h === 0) return m + " min";
     let mStr = m < 10 ? "0" + m : m;
     return h + ":" + mStr + " h";
 }
